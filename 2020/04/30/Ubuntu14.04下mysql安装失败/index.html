@@ -1,0 +1,20 @@
+<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="author" content="Fanslyx"><link rel="alternative" href="/atom.xml" title="Fanslyx" type="application/atom+xml"><link rel="icon" href="/favicon.png"><title>Ubuntu14.04下mysql安装失败 - Fanslyx</title>
+<link rel="stylesheet" href="/css/main.css">
+
+<link rel="stylesheet" href="/js/fancybox/jquery.fancybox.min.css">
+<!--[if lt IE 9]><script>(function(a,b){a="abbr article aside audio bdi canvas data datalist details dialog figcaption figure footer header hgroup main mark meter nav output progress section summary template time video".split(" ");for(b=a.length-1;b>=0;b--)document.createElement(a[b])})()</script><![endif]-->
+<script src="/js/jquery-3.1.1.min.js"></script>
+
+<script src="/js/fancybox/jquery.fancybox.min.js"></script>
+<meta name="generator" content="Hexo 4.2.0"></head><body style="opacity:0"><header class="head"><h1 class="head-title u-fl"><a href="/">Fanslyx</a></h1><nav class="head-nav u-fr"><ul class="head-nav__list"><li class="head-nav__item"><a class="head-nav__link" href="/tags">标签</a></li><li class="head-nav__item"><a class="head-nav__link" href="/archives">目录</a></li></ul></nav></header><main class="main"><article class="post"><header class="post__head"><time class="post__time" datetime="2020-04-30T09:17:45.972Z">2020 - 04 - 30 17:17:45</time><h1 class="post__title"><a href="/2020/04/30/Ubuntu14.04%E4%B8%8Bmysql%E5%AE%89%E8%A3%85%E5%A4%B1%E8%B4%A5/">Ubuntu14.04下mysql安装失败</a></h1><div class="post__main echo"><hr>
+<h2 id="nbsp-nbsp"><a href="#nbsp-nbsp" class="headerlink" title="&nbsp;&nbsp;"></a>&nbsp;&nbsp;</h2><p>&nbsp; &nbsp;<br>&nbsp; &nbsp;   </p>
+<h2 id="报错显示问题："><a href="#报错显示问题：" class="headerlink" title="报错显示问题："></a>报错显示问题：</h2><p>dpkg: error processing mysql-server (–configure): dependency problems - leaving unconfigured<br>start: Job failed to start<br>invoke-rc.d: initscript mysql, action “start” failed.<br>dpkg: error processing mysql-server-5.5 (–configure)</p>
+<p>&nbsp; &nbsp;  </p>
+<h2 id="解决方法："><a href="#解决方法：" class="headerlink" title="解决方法："></a>解决方法：</h2><p><em>//查看网络配置</em><br>&nbsp; &nbsp;<br>&nbsp; &nbsp;<br>auto lo<br>&nbsp; &nbsp;<br>iface lo inet loopback<br>&nbsp; &nbsp;  </p>
+<p><em>//研究了一下我的配置没有问题。问题原因是我删除的时候是手动的。解决办法如下：</em><br>&nbsp; &nbsp;<br>sudo rm /var/lib/mysql/ -R<br>&nbsp; &nbsp;<br>sudo rm /etc/mysql/ -R<br>&nbsp; &nbsp;<br>sudo apt-get autoremove mysql* –purge<br>&nbsp; &nbsp;<br>apt-get remove apparmor<br>&nbsp; &nbsp;<br>sudo apt-get install mysql-server mysql-common</p>
+<hr>
+</div></header></article><section class="reward"><a class="btn-reward" href="#">打赏</a><div class="reward-wrapper clearfix"><img src="/img/wechat.png" title="微信"></div></section></main><footer class="foot"><div class="foot-copy">&copy; 2016 - 2020 Fanslyx</div></footer>
+<script src="/js/scroller.js"></script>
+
+<script src="/js/main.js"></script>
+</body></html>
